@@ -1,0 +1,259 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bandor  💌</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Segoe UI", sans-serif;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 20% 20%, #ffd6e7 0, transparent 30%),
+                radial-gradient(circle at 80% 80%, #d9d6ff 0, transparent 30%),
+                linear-gradient(135deg, #fff1f7, #eeeaff);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 430px;
+            text-align: center;
+            padding: 40px 25px;
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 20px 60px rgba(120, 80, 120, 0.2);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .heart {
+            font-size: 65px;
+            animation: heartbeat 1.4s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        h1 {
+            margin-top: 15px;
+            color: #d63384;
+            font-size: 34px;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 28px;
+            padding: 14px 30px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: linear-gradient(135deg, #ff6fa5, #c77dff);
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(210, 100, 170, 0.3);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.04);
+        }
+
+        #message {
+            display: none;
+            margin-top: 25px;
+
+            color: #555;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        #message .sorry {
+            font-size: 30px;
+            font-weight: bold;
+            color: #d63384;
+            margin-bottom: 12px;
+        }
+
+        .signature {
+            margin-top: 18px;
+            color: #9b59b6;
+            font-weight: bold;
+        }
+
+        .floating {
+            position: absolute;
+            font-size: 22px;
+            animation: floatUp linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .small-text {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating hearts -->
+    <div class="floating" style="left:8%; animation-duration:8s;">♡</div>
+    <div class="floating" style="left:20%; animation-duration:11s;">♥</div>
+    <div class="floating" style="left:35%; animation-duration:9s;">♡</div>
+    <div class="floating" style="left:55%; animation-duration:12s;">♥</div>
+    <div class="floating" style="left:72%; animation-duration:10s;">♡</div>
+    <div class="floating" style="left:88%; animation-duration:7s;">♥</div>
+
+    <div class="container">
+
+        <div class="heart">💌</div>
+
+        <h1>Hey... Listen 🥺</h1>
+
+        <p class="subtitle">
+            I made a little something for you.
+            <br>
+            Just click the button...
+        </p>
+
+        <button onclick="showSorry()">
+            Click Me 💗
+        </button>
+
+        <div id="message">
+
+            <div class="sorry">
+                I'm Really Sorry 🥺
+            </div>
+
+            <p>
+                I know you're upset, and honestly,
+                I don't like knowing that you're hurt because of me.
+            </p>
+
+            <br>
+
+            <p>
+                Maybe I made a mistake.
+                Maybe I could have handled things better.
+                But one thing I want you to know is...
+                <b>I truly care about you.</b>
+            </p>
+
+            <br>
+
+            <p>
+                So please don't stay angry for too long. 🌸
+                Let's leave the bad moment behind
+                and start again with a smile. 🤍
+            </p>
+
+            <div class="signature">
+                Sorry... really. 💗
+            </div>
+
+        </div>
+
+        <div class="small-text">
+            Made with a little bit of courage & lots of sorry ✨
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function showSorry() {
+
+            const message = document.getElementById("message");
+
+            message.style.display = "block";
+
+            // Change button text
+            document.querySelector("button").innerHTML =
+                "Thank you for reading 🥺💗";
+
+            // Create extra floating hearts
+            for (let i = 0; i < 15; i++) {
+
+                const heart = document.createElement("div");
+
+                heart.innerHTML =
+                    Math.random() > 0.5 ? "💗" : "✨";
+
+                heart.classList.add("floating");
+
+                heart.style.left =
+                    Math.random() * 100 + "%";
+
+                heart.style.animationDuration =
+                    (5 + Math.random() * 6) + "s";
+
+                heart.style.fontSize =
+                    (15 + Math.random() * 20) + "px";
+
+                document.body.appendChild(heart);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+```
